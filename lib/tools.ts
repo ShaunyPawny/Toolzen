@@ -117,6 +117,22 @@ export const tools: Tool[] = [
   featured: true,
 },
 
+{
+  name: "Ideal Weight Calculator",
+  slug: "ideal-weight-calculator",
+  description: "Estimate a healthy weight range based on your height.",
+  category: "everyday",
+  featured: false,
+},
+
+{
+  name: "Water Intake Calculator",
+  slug: "water-intake-calculator",
+  description: "Estimate your recommended daily water intake.",
+  category: "everyday",
+  featured: false,
+},
+
 ]
 
 export const categoryLabels: Record<ToolCategory, string> = {
