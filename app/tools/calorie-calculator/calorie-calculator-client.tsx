@@ -20,38 +20,111 @@ import {
   type Sex,
 } from "@/lib/calculators/calories"
 
+type HeightMode = "metric" | "imperial"
+type WeightMode = "metric" | "imperial"
+
 export default function CalorieCalculatorClient() {
   const [sex, setSex] = useState<Sex>("male")
   const [age, setAge] = useState("30")
-  const [weight, setWeight] = useState("70")
-  const [height, setHeight] = useState("175")
+
+  const [weightMode, setWeightMode] = useState<WeightMode>("metric")
+  const [weightKg, setWeightKg] = useState("70")
+  const [weightStone, setWeightStone] = useState("11")
+  const [weightPounds, setWeightPounds] = useState("0")
+
+  const [heightMode, setHeightMode] = useState<HeightMode>("metric")
+  const [heightCm, setHeightCm] = useState("175")
+  const [heightFeet, setHeightFeet] = useState("5")
+  const [heightInches, setHeightInches] = useState("9")
+
   const [activityLevel, setActivityLevel] =
     useState<ActivityLevel>("moderate")
 
   const result = useMemo(() => {
     const parsedAge = Number(age)
-    const parsedWeight = Number(weight)
-    const parsedHeight = Number(height)
 
-    if (
-      Number.isNaN(parsedAge) ||
-      Number.isNaN(parsedWeight) ||
-      Number.isNaN(parsedHeight) ||
-      parsedAge <= 0 ||
-      parsedWeight <= 0 ||
-      parsedHeight <= 0
-    ) {
+    if (Number.isNaN(parsedAge) || parsedAge <= 0) {
       return null
+    }
+
+    let parsedWeightKg = 0
+
+    if (weightMode === "metric") {
+      parsedWeightKg = Number(weightKg)
+
+      if (Number.isNaN(parsedWeightKg) || parsedWeightKg <= 0) {
+        return null
+      }
+    } else {
+      const stone = Number(weightStone)
+      const pounds = Number(weightPounds)
+
+      if (
+        Number.isNaN(stone) ||
+        Number.isNaN(pounds) ||
+        stone < 0 ||
+        pounds < 0
+      ) {
+        return null
+      }
+
+      const totalPounds = stone * 14 + pounds
+      parsedWeightKg = totalPounds * 0.45359237
+
+      if (parsedWeightKg <= 0) {
+        return null
+      }
+    }
+
+    let parsedHeightCm = 0
+
+    if (heightMode === "metric") {
+      parsedHeightCm = Number(heightCm)
+
+      if (Number.isNaN(parsedHeightCm) || parsedHeightCm <= 0) {
+        return null
+      }
+    } else {
+      const feet = Number(heightFeet)
+      const inches = Number(heightInches)
+
+      if (
+        Number.isNaN(feet) ||
+        Number.isNaN(inches) ||
+        feet < 0 ||
+        inches < 0
+      ) {
+        return null
+      }
+
+      const totalInches = feet * 12 + inches
+      parsedHeightCm = totalInches * 2.54
+
+      if (parsedHeightCm <= 0) {
+        return null
+      }
     }
 
     return calculateCalories(
       sex,
       parsedAge,
-      parsedWeight,
-      parsedHeight,
+      parsedWeightKg,
+      parsedHeightCm,
       activityLevel
     )
-  }, [sex, age, weight, height, activityLevel])
+  }, [
+    sex,
+    age,
+    weightMode,
+    weightKg,
+    weightStone,
+    weightPounds,
+    heightMode,
+    heightCm,
+    heightFeet,
+    heightInches,
+    activityLevel,
+  ])
 
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-10">
@@ -91,31 +164,133 @@ export default function CalorieCalculatorClient() {
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="weight">Weight (kg)</Label>
-              <Input
-                id="weight"
-                type="number"
-                min="0"
-                step="0.1"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                placeholder="Enter weight in kilograms"
-              />
+            <div className="space-y-3">
+              <Label>Weight Unit</Label>
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  type="button"
+                  variant={weightMode === "metric" ? "default" : "outline"}
+                  onClick={() => setWeightMode("metric")}
+                >
+                  Weight in kg
+                </Button>
+
+                <Button
+                  type="button"
+                  variant={weightMode === "imperial" ? "default" : "outline"}
+                  onClick={() => setWeightMode("imperial")}
+                >
+                  Weight in st + lb
+                </Button>
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="height">Height (cm)</Label>
-              <Input
-                id="height"
-                type="number"
-                min="0"
-                step="0.1"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                placeholder="Enter height in centimetres"
-              />
+            {weightMode === "metric" ? (
+              <div className="space-y-2">
+                <Label htmlFor="weightKg">Weight (kg)</Label>
+                <Input
+                  id="weightKg"
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  value={weightKg}
+                  onChange={(e) => setWeightKg(e.target.value)}
+                  placeholder="Enter weight in kilograms"
+                />
+              </div>
+            ) : (
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="weightStone">Weight (st)</Label>
+                  <Input
+                    id="weightStone"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={weightStone}
+                    onChange={(e) => setWeightStone(e.target.value)}
+                    placeholder="Stone"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="weightPounds">Weight (lb)</Label>
+                  <Input
+                    id="weightPounds"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={weightPounds}
+                    onChange={(e) => setWeightPounds(e.target.value)}
+                    placeholder="Pounds"
+                  />
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-3">
+              <Label>Height Unit</Label>
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  type="button"
+                  variant={heightMode === "metric" ? "default" : "outline"}
+                  onClick={() => setHeightMode("metric")}
+                >
+                  Height in cm
+                </Button>
+
+                <Button
+                  type="button"
+                  variant={heightMode === "imperial" ? "default" : "outline"}
+                  onClick={() => setHeightMode("imperial")}
+                >
+                  Height in ft + in
+                </Button>
+              </div>
             </div>
+
+            {heightMode === "metric" ? (
+              <div className="space-y-2">
+                <Label htmlFor="heightCm">Height (cm)</Label>
+                <Input
+                  id="heightCm"
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  value={heightCm}
+                  onChange={(e) => setHeightCm(e.target.value)}
+                  placeholder="Enter height in centimetres"
+                />
+              </div>
+            ) : (
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="heightFeet">Height (ft)</Label>
+                  <Input
+                    id="heightFeet"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={heightFeet}
+                    onChange={(e) => setHeightFeet(e.target.value)}
+                    placeholder="Feet"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="heightInches">Height (in)</Label>
+                  <Input
+                    id="heightInches"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={heightInches}
+                    onChange={(e) => setHeightInches(e.target.value)}
+                    placeholder="Inches"
+                  />
+                </div>
+              </div>
+            )}
 
             <div className="space-y-2">
               <Label>Activity Level</Label>
@@ -189,19 +364,19 @@ export default function CalorieCalculatorClient() {
         exampleText="A moderately active adult needs more daily calories than a sedentary adult of the same height and weight because activity increases total energy use."
         faqs={[
           {
+            question: "Can I use stone and pounds?",
+            answer:
+              "Yes. This version supports both kilograms and stone with pounds.",
+          },
+          {
+            question: "Can I use feet and inches for height?",
+            answer:
+              "Yes. This version supports both centimetres and feet with inches.",
+          },
+          {
             question: "What is BMR?",
             answer:
               "BMR stands for Basal Metabolic Rate. It estimates how many calories your body needs at rest.",
-          },
-          {
-            question: "Is this an exact calorie target?",
-            answer:
-              "No. It is an estimate, but it is a useful starting point for planning nutrition goals.",
-          },
-          {
-            question: "Can I use this for weight loss or gain?",
-            answer:
-              "Yes. The calculator gives estimated maintenance, weight loss, and weight gain calorie targets.",
           },
         ]}
       />
