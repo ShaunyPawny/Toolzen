@@ -133,6 +133,14 @@ export const tools: Tool[] = [
   featured: false,
 },
 
+{
+  name: "Tip Calculator",
+  slug: "tip-calculator",
+  description: "Calculate tip, total bill, and split the cost between people.",
+  category: "everyday",
+  featured: false,
+},
+
 ]
 
 export const categoryLabels: Record<ToolCategory, string> = {
