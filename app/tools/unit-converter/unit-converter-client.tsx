@@ -54,7 +54,7 @@ export default function UnitConverterClient() {
     <div className="mx-auto w-full max-w-4xl px-4 py-10">
       <CalculatorShell
         title="Unit Converter"
-        description="Convert between common length and weight units quickly and easily."
+        description="Convert between common length, height, and weight units quickly and easily."
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-5">
@@ -64,7 +64,7 @@ export default function UnitConverterClient() {
                 variant={category === "length" ? "default" : "outline"}
                 onClick={() => handleCategoryChange("length")}
               >
-                Length
+                Length / Height
               </Button>
 
               <Button
@@ -161,7 +161,7 @@ export default function UnitConverterClient() {
 
       <ToolContentSection
         heading="How this unit converter works"
-        intro="This unit converter helps you convert between common length and weight units. It first converts the input into a base unit, then converts that base value into your chosen target unit."
+intro="This unit converter helps you convert between common length, height, and weight units. It first converts the input into a base unit, then converts that base value into your chosen target unit."
         formula="Converted value = input × from factor ÷ to factor"
         exampleTitle="Example"
         exampleText="If you convert 1 metre to feet, the calculator first uses metres as the base unit and then converts the result into feet."

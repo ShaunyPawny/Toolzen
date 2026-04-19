@@ -109,6 +109,14 @@ export const tools: Tool[] = [
   featured: true,
 },
 
+{
+  name: "Calorie Calculator",
+  slug: "calorie-calculator",
+  description: "Estimate daily calorie needs and maintenance calories.",
+  category: "everyday",
+  featured: true,
+},
+
 ]
 
 export const categoryLabels: Record<ToolCategory, string> = {
