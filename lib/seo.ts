@@ -5,7 +5,7 @@ type SEOProps = {
 }
 
 export function buildMetadata({ title, description, path = "" }: SEOProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://toolzen.co.uk"
   const fullTitle = `${title} | Toolzen`
 
   return {

@@ -101,6 +101,14 @@ export const tools: Tool[] = [
   featured: true,
 },
 
+{
+  name: "BMI Calculator",
+  slug: "bmi-calculator",
+  description: "Calculate your BMI from your height and weight.",
+  category: "everyday",
+  featured: true,
+},
+
 ]
 
 export const categoryLabels: Record<ToolCategory, string> = {

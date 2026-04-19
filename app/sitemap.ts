@@ -2,35 +2,26 @@ import { MetadataRoute } from "next"
 import { tools } from "@/lib/tools"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://toolzen.co.uk"
 
-  // Static pages
   const staticRoutes = [
     {
       url: baseUrl,
       lastModified: new Date(),
+      priority: 1,
     },
     {
       url: `${baseUrl}/tools`,
       lastModified: new Date(),
+      priority: 1,
     },
   ]
 
-  // Tool pages
   const toolRoutes = tools.map((tool) => ({
     url: `${baseUrl}/tools/${tool.slug}`,
     lastModified: new Date(),
+    priority: 0.8,
   }))
 
-  return [
-  ...staticRoutes.map((route) => ({
-    ...route,
-    priority: 1,
-  })),
-  ...toolRoutes.map((route) => ({
-    ...route,
-    priority: 0.8,
-  })),
-]
+  return [...staticRoutes, ...toolRoutes]
 }
