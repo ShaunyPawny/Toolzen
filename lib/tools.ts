@@ -141,6 +141,14 @@ export const tools: Tool[] = [
   featured: false,
 },
 
+{
+  name: "Time Duration Calculator",
+  slug: "time-duration-calculator",
+  description: "Calculate the time between two times with optional break deduction.",
+  category: "everyday",
+  featured: false,
+},
+
 ]
 
 export const categoryLabels: Record<ToolCategory, string> = {
