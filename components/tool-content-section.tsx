@@ -12,6 +12,7 @@ type ToolContentSectionProps = {
   faqs?: FAQItem[]
 }
 
+
 export function ToolContentSection({
   heading,
   intro,
