@@ -8,65 +8,67 @@ export default function HomePage() {
   const homepageCategories: ToolCategory[] = ["finance", "everyday", "dates"]
 
   return (
-    <div className="min-h-screen bg-background">
-      <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-background to-background" />
-        <div className="absolute left-1/2 top-0 -z-10 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-indigo-200/30 blur-3xl" />
+    <div className="min-h-screen bg-slate-50">
+      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-700 via-blue-600 to-cyan-500 text-white">
+        <div className="absolute left-[-120px] top-[-120px] h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute bottom-[-140px] right-[-80px] h-96 w-96 rounded-full bg-cyan-300/30 blur-3xl" />
 
         <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center rounded-full border bg-background/80 px-4 py-1.5 text-sm text-muted-foreground shadow-sm backdrop-blur">
-              Free online tools for finance, health, dates, and everyday calculations
+            <div className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white/80 backdrop-blur">
+              Fast, free and easy to use. No signup required.
             </div>
 
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
-              Smart calculators and tools, without the clutter
+            <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
+              Simple online calculators and tools for{" "}
+              <span className="text-cyan-200">everyday life</span>
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-              Toolzen helps you calculate faster with clean, modern tools for
-              mortgages, salary, VAT, BMI, calories, time, and more.
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/80 md:text-lg">
+              Useful calculators for finance, health, dates, conversions and
+              everyday decisions.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button asChild size="lg" className="rounded-xl px-6">
-                <Link href="/tools">Browse All Tools</Link>
+            <div className="mx-auto mt-8 flex max-w-xl rounded-2xl bg-white p-2 shadow-2xl">
+              <input
+                className="min-w-0 flex-1 rounded-xl px-4 text-sm text-slate-900 outline-none"
+                placeholder="Search calculators..."
+              />
+              <Button asChild className="rounded-xl">
+                <Link href="/tools">Search</Link>
               </Button>
+            </div>
+          </div>
 
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-xl px-6"
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {homepageCategories.map((category) => (
+              <Link
+                key={category}
+                href="/tools"
+                className="rounded-2xl border border-white/15 bg-white/10 p-5 text-center backdrop-blur transition hover:-translate-y-1 hover:bg-white/15"
               >
-                <Link href="/tools/mortgage-calculator">
-                  Try Mortgage Calculator
-                </Link>
-              </Button>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl border bg-background/80 p-4 shadow-sm backdrop-blur">
-                <div className="text-2xl font-semibold">{tools.length}+</div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Useful calculators
+                <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-xl">
+                  {category === "finance" ? "💷" : category === "dates" ? "📅" : "🧰"}
+                </div>
+                <h3 className="font-semibold">{categoryLabels[category]}</h3>
+                <p className="mt-1 text-sm text-white/70">
+                  Quick {categoryLabels[category].toLowerCase()} tools
                 </p>
-              </div>
+              </Link>
+            ))}
 
-              <div className="rounded-2xl border bg-background/80 p-4 shadow-sm backdrop-blur">
-                <div className="text-2xl font-semibold">Finance</div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Salary, mortgage, VAT, loan, savings
-                </p>
+            <Link
+              href="/tools"
+              className="rounded-2xl border border-white/15 bg-white/10 p-5 text-center backdrop-blur transition hover:-translate-y-1 hover:bg-white/15"
+            >
+              <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-xl">
+                ✨
               </div>
-
-              <div className="rounded-2xl border bg-background/80 p-4 shadow-sm backdrop-blur">
-                <div className="text-2xl font-semibold">Health</div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  BMI, calories, water intake, ideal weight
-                </p>
-              </div>
-            </div>
+              <h3 className="font-semibold">All Tools</h3>
+              <p className="mt-1 text-sm text-white/70">
+                Browse every calculator
+              </p>
+            </Link>
           </div>
         </div>
       </section>
@@ -75,10 +77,10 @@ export default function HomePage() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-              Featured Tools
+              Popular Calculators
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Start with some of the most useful calculators on Toolzen.
+              Start with some of the most useful tools on Toolzen.
             </p>
           </div>
 
@@ -86,7 +88,7 @@ export default function HomePage() {
             href="/tools"
             className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
           >
-            View all tools
+            View all tools →
           </Link>
         </div>
 
@@ -97,70 +99,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y bg-muted/20">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-              Browse by Category
-            </h2>
-            <p className="mt-2 text-muted-foreground">
-              Explore tools by topic to find what you need faster.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {homepageCategories.map((category) => {
-              const categoryTools = tools
-                .filter((tool) => tool.category === category)
-                .slice(0, 3)
-
-              return (
-                <div
-                  key={category}
-                  className="rounded-2xl border bg-background p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
-                >
-                  <div className="mb-4">
-                    <h3 className="text-xl font-semibold tracking-tight">
-                      {categoryLabels[category]}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      Useful {categoryLabels[category].toLowerCase()} tools for quick,
-                      practical calculations.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3">
-                    {categoryTools.map((tool) => (
-                      <Link
-                        key={tool.slug}
-                        href={`/tools/${tool.slug}`}
-                        className="block rounded-xl border px-4 py-3 text-sm transition hover:bg-muted"
-                      >
-                        <div className="font-medium">{tool.name}</div>
-                        <div className="mt-1 text-muted-foreground">
-                          {tool.description}
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-            Built to be fast, simple, and genuinely useful
-          </h2>
-          <p className="mt-4 text-base leading-7 text-muted-foreground md:text-lg">
-            Toolzen is designed for people who want quick answers without
-            confusing interfaces. Whether you are checking mortgage payments,
-            tracking calories, or splitting a bill, the goal is the same:
-            clean tools that save time.
-          </p>
+      <section className="border-t bg-white">
+        <div className="mx-auto grid max-w-6xl gap-4 px-4 py-8 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["⚡", "Fast & Easy", "Instant results"],
+            ["🔒", "100% Free", "No hidden fees"],
+            ["✅", "Accurate", "Practical calculations"],
+            ["📱", "Mobile Ready", "Works on any device"],
+          ].map(([icon, title, text]) => (
+            <div key={title} className="flex items-center gap-3 rounded-2xl border bg-slate-50 p-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100">
+                {icon}
+              </div>
+              <div>
+                <div className="font-medium">{title}</div>
+                <div className="text-sm text-muted-foreground">{text}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>

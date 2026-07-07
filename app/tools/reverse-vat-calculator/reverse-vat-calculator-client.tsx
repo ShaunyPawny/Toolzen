@@ -30,7 +30,7 @@ export default function ReverseVATCalculatorClient() {
   }, [grossAmount, vatRate])
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-10">
+    <div className="mx-auto w-full max-w-6xl px-4 py-10">
       <CalculatorShell
         title="Reverse VAT Calculator"
         description="Remove VAT from a total amount and see the net amount and VAT portion instantly."
@@ -64,7 +64,7 @@ export default function ReverseVATCalculatorClient() {
             </div>
           </div>
 
-          <div className="rounded-2xl border bg-muted/30 p-5">
+          <div className="rounded-3xl border bg-white p-6 shadow-sm">
             <h2 className="mb-4 text-xl font-semibold">Results</h2>
 
             {result ? (

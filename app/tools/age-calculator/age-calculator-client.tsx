@@ -17,7 +17,7 @@ export default function AgeCalculatorPage() {
   }, [dateOfBirth])
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-10">
+    <div className="mx-auto w-full max-w-6xl px-4 py-10">
       <CalculatorShell
         title="Age Calculator"
         description="Calculate exact age in years, months, and days from a date of birth."
@@ -35,7 +35,7 @@ export default function AgeCalculatorPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border bg-muted/30 p-5">
+          <div className="rounded-3xl border bg-white p-6 shadow-sm">
             <h2 className="mb-4 text-xl font-semibold">Results</h2>
 
             {result ? (

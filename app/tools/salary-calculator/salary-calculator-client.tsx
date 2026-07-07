@@ -31,7 +31,7 @@ export default function SalaryCalculatorClient() {
   }, [annualSalary, taxRate])
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-10">
+    <div className="mx-auto w-full max-w-6xl px-4 py-10">
       <CalculatorShell
         title="Salary Calculator"
         description="Estimate tax, annual take-home pay, and monthly net salary from your gross salary."
@@ -66,7 +66,7 @@ export default function SalaryCalculatorClient() {
             </div>
           </div>
 
-          <div className="rounded-2xl border bg-muted/30 p-5">
+          <div className="rounded-3xl border bg-white p-6 shadow-sm">
             <h2 className="mb-4 text-xl font-semibold">Results</h2>
 
             {result ? (
