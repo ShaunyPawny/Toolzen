@@ -38,7 +38,8 @@ export default function LoanRepaymentCalculatorClient() {
   }, [loanAmount, interestRate, loanTerm])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Loan Repayment Calculator"
         description="Calculate monthly loan repayments, total repayment, and total interest."
@@ -144,6 +145,7 @@ export default function LoanRepaymentCalculatorClient() {
           },
         ]}
       />
+    </div>
     </div>
   )
 }

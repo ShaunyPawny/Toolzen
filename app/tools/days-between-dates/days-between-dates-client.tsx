@@ -18,7 +18,8 @@ export default function DaysBetweenDatesPage() {
   }, [startDate, endDate])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Days Between Dates Calculator"
         description="Calculate the number of days between two dates quickly and easily."
@@ -100,6 +101,7 @@ export default function DaysBetweenDatesPage() {
     },
   ]}
 />
+    </div>
     </div>
   )
 }

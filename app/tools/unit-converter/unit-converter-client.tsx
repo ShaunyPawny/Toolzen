@@ -51,7 +51,8 @@ export default function UnitConverterClient() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Unit Converter"
         description="Convert between common length, height, and weight units quickly and easily."
@@ -183,6 +184,7 @@ intro="This unit converter helps you convert between common length, height, and 
           },
         ]}
       />
+    </div>
     </div>
   )
 }

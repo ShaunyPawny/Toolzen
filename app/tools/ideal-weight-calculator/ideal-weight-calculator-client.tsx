@@ -51,7 +51,8 @@ export default function IdealWeightCalculatorClient() {
   }, [heightMode, heightCm, heightFeet, heightInches])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Ideal Weight Calculator"
         description="Estimate a healthy weight range based on your height."
@@ -170,6 +171,7 @@ export default function IdealWeightCalculatorClient() {
           },
         ]}
       />
+    </div>
     </div>
   )
 }

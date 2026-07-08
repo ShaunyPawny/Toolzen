@@ -35,7 +35,8 @@ export default function CompoundInterestCalculatorClient() {
   }, [principal, monthlyContribution, rate, years])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Compound Interest Calculator"
         description="Estimate investment growth with compound interest and monthly contributions."
@@ -129,6 +130,7 @@ export default function CompoundInterestCalculatorClient() {
           },
         ]}
       />
+    </div>
     </div>
   )
 }

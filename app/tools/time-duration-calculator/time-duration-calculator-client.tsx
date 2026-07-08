@@ -24,7 +24,8 @@ export default function TimeDurationCalculatorClient() {
   }, [startTime, endTime, breakMinutes])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Time Duration Calculator"
         description="Calculate the time between two times, with optional break deduction."
@@ -122,6 +123,7 @@ export default function TimeDurationCalculatorClient() {
           },
         ]}
       />
+    </div>
     </div>
   )
 }

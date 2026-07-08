@@ -10,7 +10,7 @@ export function CalculatorShell({
   children,
 }: CalculatorShellProps) {
   return (
-    <section className="overflow-hidden rounded-[2rem] border bg-white shadow-xl">
+    <section className="overflow-hidden rounded-[2rem] border bg-white shadow-2xl shadow-indigo-100/60">
       <div className="relative overflow-hidden bg-gradient-to-br from-indigo-700 via-blue-600 to-cyan-500 px-6 py-10 text-white md:px-10">
         <div className="absolute right-[-80px] top-[-80px] h-64 w-64 rounded-full bg-white/10 blur-3xl" />
         <div className="absolute bottom-[-120px] left-[-80px] h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl" />
@@ -42,7 +42,7 @@ export function CalculatorShell({
         </div>
       </div>
 
-      <div className="bg-slate-50 p-5 md:p-8">{children}</div>
+      <div className="bg-white p-5 md:p-8">{children}</div>
     </section>
   )
 }

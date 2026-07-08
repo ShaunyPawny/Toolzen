@@ -56,7 +56,8 @@ export default function WaterIntakeCalculatorClient() {
   }, [weightMode, weightKg, weightStone, weightPounds, activityLevel])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Water Intake Calculator"
         description="Estimate your recommended daily water intake based on body weight and activity level."
@@ -209,6 +210,7 @@ export default function WaterIntakeCalculatorClient() {
           },
         ]}
       />
+    </div>
     </div>
   )
 }

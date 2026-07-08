@@ -36,7 +36,8 @@ export default function VATCalculatorClient() {
   }, [parsedAmount, parsedVatRate, mode])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
     <CalculatorShell
       title="VAT Calculator"
       description="Quickly add or remove VAT from any amount. Great for UK pricing, invoices, and everyday calculations."
@@ -152,6 +153,7 @@ export default function VATCalculatorClient() {
     },
   ]}
 />
+    </div>
     </div>
   )
 }

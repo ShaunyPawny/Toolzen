@@ -51,7 +51,8 @@ export default function PercentageCalculatorClient() {
   }, [mode, value, percentage, original, newValue])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Percentage Calculator"
         description="Work out percentages quickly, including percentage of a number and percentage increase."
@@ -205,6 +206,7 @@ export default function PercentageCalculatorClient() {
           },
         ]}
       />
+    </div>
     </div>
   )
 }

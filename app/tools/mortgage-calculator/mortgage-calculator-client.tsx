@@ -44,7 +44,8 @@ export default function MortgageCalculatorClient() {
   }, [propertyPrice, deposit, interestRate, mortgageTerm])
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-10">
+  <div className="mx-auto w-full max-w-6xl">
       <CalculatorShell
         title="Mortgage Calculator"
         description="Estimate your mortgage loan amount, monthly payments, total repayment, and total interest."
@@ -170,6 +171,7 @@ export default function MortgageCalculatorClient() {
           },
         ]}
       />
+    </div>
     </div>
   )
 }
